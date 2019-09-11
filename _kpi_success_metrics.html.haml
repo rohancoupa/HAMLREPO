@@ -1,0 +1,18 @@
+.header
+  %h2
+    %img.header_icon.header-additional-settings{:src => "/assets/blank.gif"}/
+    Success Metrics
+.form_element.wrapper_vertical
+  %label{:for => "group_label"} Description
+  %span
+    Percentage of Orders with an existing Contract (by order amount)
+.form_element.wrapper_vertical
+  %label{:for => "group_label"} Details
+  %span
+    Ideally this metric is as maximized as possible
+.form_element.wrapper_vertical
+  %label{:for => "group_label"} Formula
+  %span
+    This KPI considers order lines associated with an order header in the status of issued or closed. It is equal to the sum of order line reporting totals where the order line contract id is not blank, divided by the sum of all order line reporting totals.
+-# This haml file creates the success metrics. The success metrics follows a
+-# similar precedent to the prescriptions.

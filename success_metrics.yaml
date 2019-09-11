@@ -1,0 +1,156 @@
+Name: On-Contract Rate by Order Amount
+  Description: Percentage of orders with an existing contract (by order spend)
+  Details: The higher the better.
+  Formula: This KPI considers order lines associated with an order header in the status of "issued" or "closed". It is equal to the sum of order line reporting totals where the order line contract id is not blank, divided by the sum of all order line reporting totals.
+Name: On-Contract Rate by Order Count
+  Description: Percentage of orders with an existing contract (by number of order lines)
+  Details: The higher the better.
+  Formula: This KPI considers order lines associated with an order header in the status of "issued" or "closed". It is equal to the distinct count of order lines where the order line contract id is not blank, divided by the distinct count of all order lines.
+Name: Catalog (Punchout and Catalog) Rate by Order Amount
+  Description: Spend through catalogs in Coupa / Total spend in Coupa
+  Details: The higher the better.
+  Formula: The sum of the order line reporting totals where the order header status is issued or closed and either the order line item id is populated or the requisition line has a site punchout id. This is divided by the sum of order line reporting totals where the order header status is issued or closed.
+Name: Catalog (Punchout and Catalog) Rate by Order Count
+  Description: Count of orders through catalogs in Coupa / Total count of orders in Coupa
+  Details: The higher the better.
+  Formula: The distinct count of the order lines where the order header status is issued or closed and either the order line item id is populated or the requisition line has a site punchout id. This is divided by the distinct count of order lines where the order header status is issued or closed.
+Name: Sourced Spend Rate by Invoice Amount
+  Description: Spend in Coupa sourced through events / Total spend in Coupa
+  Details: The higher the better.
+  Formula: The sum of approved Invoice line reporting totals where the requisition line has a quote response ID divided by the sum of all invoice line reporting totals with approved invoice headers
+Name: PO-Backed Invoice Rate by Invoice Amount
+  Description: PO-based spend in Coupa / (PO-based + non-PO-based spend in Coupa)
+  Details: The higher the better.
+  Formula: The sum of the Invoice Line Reporting Totals where the invoice header is approved and the Order line ID is populated. This is divided by the Sum of invoice Line reporting totals where the the header status is approved, plus the sum of Expense line reporting totals where the expense report is approved for payment, paid or scheduled for payment
+Name: PO-Backed Invoice Rate by Invoice Count
+  Description: Count of PO-based spend in Coupa / Count of (PO-based + non-PO-based spend in Coupa)
+  Details: The higher the better.
+  Formula: The distinct count of the invoice lines where the invoice header is approved and the order line id is populated. This is divided by the distinct count of invoice lines where the the header status is approved, plus the distinct count of expense lines where the expense report is approved for payment, paid or scheduled for payment
+Name: Early Payment Discount Availability Rate by Invoice Amount
+  Description: Spend in Coupa for which early payment terms exist / Total spend in Coupa
+  Details: The higher the better.
+  Formula: The sum of invoice line reporting totals multiplied by their associated payment discount rate where the invoice header status is "approved" and the discount due date is not blank. This is divided by the sum of invoice line reporting totals where the invoice header status is "approved".
+Name: Early Payment Discount Realization Rate by Invoice Amount
+  Description: Spend in Coupa for which early payment discount was realized / Total spend in Coupa
+  Details: The higher the better.
+  Formula: The sum of all the invoice line reporting totals multiplied by the their associated payment term discount rate for invoice headers that have a payment date before the invoice header diccount due date, where the invoive header is approved and the discount due date is populated. This is divided by the sum of all invoice line reporting totals where the invoive header is approved.
+Name: Early Payment Discount Realized Amount
+  Description: Sum of discount amount in invoice headers where early payment terms exist and payment date is before discount due date
+  Details: This number is not normalized accross Coupa Community members.
+  Formula: The sum of all the invoice line reporting totals multiplied by the their associated payment term discount rate for invoice headers that have a payment date before the invoice header diccount due date, where the invoive header is approved and the discount due date is populated.
+Name: Expense Compliance Rate
+  Description: Percentage of approved expense lines that did not contain any policy violations (i.e. missing receipt, over policy limit).
+  Details: The higher the better.
+  Formula: This KPI considers expense lines in an expense status of approved for payment, paid, scheduled for payment, or approved. It is equal to the absolute value of the count of expense lines that have at least one expense violations type that is either an expense policy violation or an expense duplicate violation minus the count of all expense lines. This is divided by the count of all expense lines.
+Name: Procurable Opportunity Rate
+  Description: Percentage of a customer's overall expense spend that presents a procurable opportunity
+  Details: The lower the better.
+  Formula: Does not consider expense reports that are in  'draft', 'pending_info', 'working' status or with an expense line reporting total equal to zero. It equals the sum of all expense line reporting totals for expense lines identified by Coupa to be procurable for your company or within the community. This number is divded by the sum of expense line reporting totals for all expsenses.
+Name: Suppliers with 80% of Spend
+  Description: Number of suppliers that account for 80% of spend in Coupa / Total number of suppliers for all spend in Coupa
+  Details: This KPI is ideally around 20%. Since too many suppliers with 80% of spend means you are not consolidaing your spend enough. However, too few suppliers providing 80% of your spend begins to expose you too much supplier risk in the event one of them can no longe provide the service.
+  Formula: It first calculates the sum of the invoices line reporting totals for all invoices that have an invoice header status of 'approved'. Then the list of suppliers is sorted by the sum of their invoice line reporting totals from greates to least. Then the count of suppliers is taken by moving down the supplier list until 80% of the total invoice line reporting total is reached. This count is divided by the total number of suppliers. To exclude anomolous data any invoices with an invoice date that is not between 1901 and 2050 are not considered.
+Name: Electronic PO Sent Rate by Order Amount
+  Description: Amount of electronic POs (cXML and email) divided by total amount of POs.
+  Details: The higher the better.
+  Formula: Sum of all order line reporting totals where status in order header versions is ''sent_via_email'' or ''sent_via_cxml'' and order is ''issued'' or ''closed'' divided by the total sum of all reporting totals where order is 'issued' or 'closed'
+Name: Electronic PO Sent Rate by Order Count
+  Description: Number of electronic POs (cXML and email) divided by total number of POs.
+  Details: The higher the better.
+  Formula: Number of orders header IDs where status in order header versions is ''sent_via_email'' or ''sent_via_cxml' and order is ''issued'' or ''closed'' divided by the total number of orders where order is 'issued' or 'closed'
+Name: Electronic Invoice Received Rate by Invoice Amount
+  Description: Amount of electronic invoices (cXML, SFTP, CSP, SAN, InvoiceSmash, or API) divided by total amount of invoices.
+  Details: The higher the better.
+  Formula: Sum of all invoice line reporting total where channel is 'cxml', 'sftp', 'csn', 'actionemail', 'api','invoicesmash' or channel is 'enterprise' but user is 'ApiUser', additionally the invoice is approved. This is divided by the total sum of all invoice lines where invoice is approved
+Name: Electronic Invoice Received Rate by Invoice Count
+  Description: Number of electronic invoices (cXML, SFTP, CSP, SAN, InvoiceSmash, or API) divided by total number of invoices.
+  Details: The higher the better.
+  Formula: Count of all invoice lines where channel is 'cxml', 'sftp', 'csn', 'actionemail', 'api','invoicesmash' or channel is 'enterprise' but user is 'ApiUser', additionally the invoice is approved. This is divided by total count of all invoice lines where invoice is approved
+Name: First Time Match Rate by Invoice Amount
+  Description: Amount of approved invoices with no exception handling or manual intervention divided by total amount of invoices.
+  Details: The higher the better.
+  Formula: The sum of invoice line reporting totals for all approved invoices minus the sum of invoice line reporting totals for all approved invoices that at one time were in a status of 'missing_po', 'tolerance_hold', 'not_received', or 'contract_hold' or have failed a tollerance. This number is divided by the sum of invoice line reporting totals for all approved invoices.
+Name: First Time Match Rate by Invoice Count
+  Description: Number of approved invoices with no exception handling or manual intervention divided by total number of invoices.
+  Details: The higher the better.
+  Formula: The distinct count of all invoices in an approved status minus the distinct count of all invoices in an approved status that at one time were in a status of 'missing_po', 'tolerance_hold', 'not_received', or 'contract_hold' or have failed a tollerance. This is divided by distinct count of all invoices in an approved status.
+Name: Cost Savings per Order
+  Description: Cost savings per Purchase Order based on increased automation and reduction on error and processing time
+  Details: The higher the better.
+  Formula: The difference in the cost of a pre- and post-Coupa purchase orders, as entered in the configuration screen, multiplied by the number of purchase orders processed in Coupa
+Name: Cost Savings per Invoice
+  Description: Cost savings per Invoice based on increased automation and reduction on error and processing time
+  Details: The higher the better.
+  Formula: The difference in the cost of a pre- and post-Coupa invoice, as entered in the configuration screen, multiplied by the number of invoices processed in Coupa
+Name: Cost Savings per Expense Report
+  Description: Cost savings per Expense Report based on increased automation and reduction on error and processing time
+  Details: The higher the better.
+  Formula: The difference in the cost of a pre- and post-Coupa expense report, as entered in the configuration screen, multiplied by the number of requisitions processed in Coupa
+Name: Requisition Approval Cycle Time
+  Description: Time between the submission and the approval of a requisition.
+  Details: The lower the better.
+  Formula: The average time between the submitted date and the final approval date for all requistion headers that have been submitted and passed final approval. The requistion header cannot be in a draft, pending approval, or pending buyer action status. The approval must be in an approved or escalated status.
+Name: Invoice Approval Cycle Time
+  Description: Time between the submission and the approval of an invoice.
+  Details: The lower the better.
+  Formula: This KPI considers the average time between the invoice header submitted date and the approval date. This is for all invoices where the invoice header is approved and has a submitted date as well as an approval date. In the evnt the invoice in an approved status but does not have a submitted date and approval date populated then the dates are inferred from the invoice history. The summitted at date is taken from the invoice history to be the time that the invoice status moved to 'new'. The approved at date is taken from the invoice history to be the time that the invoice status moved to 'approved'.
+Name: Expense Approval Cycle Time
+  Description: Time between the submission and the approval of an expense.
+  Details: The lower the better.
+  Formula: The average time between the submitted date and the final approval date for all expense reports that have been submitted and passed final approval. The expesne report must be in an approved for payment or paid status.
+Name: Average Number of Expense Approvers
+  Description: Average number of approvers for approved expense reports.
+  Details: The lower the better.
+  Formula: The average number of approvers for all expense reports in 'approved for payment', 'paid', 'scheduled for payment', and 'approved'.
+Name: Average Number of Invoice Approvers
+  Description: Total number of aprovalsteps/levels for each approved invoice divided by all approved invoices
+  Details: The lower the better.
+  Formula: The average number of approvers for all invoices in 'booking_hold', 'pending_receipt', and 'approved' status.
+Name: Average Number of Requisition Approvers
+  Description: Total number of aprovalsteps/levels for each approved requisiton divided by all approved requistions
+  Details: The lower the better.
+  Formula: The average number of approvers for all invoices in 'approved', 'backgrounded', 'ordered', 'partilly_received', and 'received' status.
+Name: Corporate Card Expenses under 30 Days Old
+  Description: Percentage of submitted corporate card lines that are under 30 days old.
+  Details: The higher the better.
+  Formula: Considers expenses from American Express, Visa,and Mastercard credit cards that have an expense report status of 'approved_for_payment', 'paid', 'scheduled_for_payment', and  'approved'. It equals the number of expense lines where the submitted date is not greater than or equal to the expense date and the expense date is populated, this is divided by the number of all the expense lines.
+Name: Expense Audit Rate
+  Description: Percentage of approved expense reports that required accounting review.
+  Details: The lower the better.
+  Formula: The distinct count of expense reports that are in 'approved_for_payment', 'paid', or 'scheduled_for_payment' status that have gone into accounting review at one point, divided by the distinct count of all expense reports that are 'approved_for_payment', 'paid', or 'scheduled_for_payment'.
+Name: Average Expense Age
+  Description: Average number of days between expense and submission dates for expense lines.
+  Details: The lower the better.
+  Formula: The time between the expense line expense date and the expense report submitted date for all expense reports in 'approved_for_payment', 'paid', 'scheduled_for_payment', or 'approved' status and the expense date is provided for the expense line.
+Name: Supplier Update to SIM Form Cycle Time
+  Description: Time between a supplier completing an update request and the approval of the request.
+  Details: The lower the better.
+  Formula: The time between the creation of a form and the the updated time for all submitted forms that have the "SupplierInformation" subject type and have a response.
+Name: New Internal SIM Form Cycle Time
+  Description: The time it takes for a user to request a supplier and for it to be approved.
+  Details: The lower the better.
+  Formula: The time between the creation of a form and the the updated time for all submitted forms that have the "SupplierInformation" subject type and have a form model scope of "new".
+Name: Internal Update to SIM Form Cycle Time
+  Description: The time it takes for an internal user to complete an update request and for it to be approved.
+  Details: The lower the better.
+  Formula: The time between the creation of a form and the the updated time for all submitted forms that have the "SupplierInformation"  subject type and have a form model scope of "Internal_update".
+Name: Active Coupa Web User Rate
+  Description: Percentage of active users in Coupa. (Active users in Coupa / Total number of users)
+  Details: The higher the better.
+  Formula: The distinct count of users where the the status is active that have logged in within the time frame selected divided by the distinct count of all users.
+Name: Active Supplier Rate
+  Description: Percentage of active suppliers in Coupa. (Active suppliers in Coupa / Total number of suppliers)
+  Details: The higher the better.
+  Formula: The distinct count of suppliers that had an invoice within the selected time frame and are in an active status divided by the distinct count of all suppliers.
+Name: Requisition and Invoice Spend Capture Rate
+  Description: Percentage of Spend Captured in Coupa. (Spend captured in Coupa / Total addressable spend)
+  Details: The higher the better.
+  Formula: The sum of expense line reporting totals where the expense report is 'approved_for_payment', 'paid', and 'scheduled_for_payment' added to the sum of invoice line reporting total where the invoice header status is approved. This sum is divided by the total addressable spend amount entered in the KPI configuration screen.
+Name: Corporate Card Adoption Rate
+  Description: Percentage of total approved expense amount charged to a corporate card (versus out-of-pocket)
+  Details: The higher the better.
+  Formula: Considers exense lines associated with an expense in "approved for payment", "paid", "scheduled for payment", or approved" statuses. It equals the sum of expense line reporting total for all lines that have a secure remote commerce name of "corporate_credit_card_amex", "corporate_credit_card_cdf3", "corporate_credit_card_vcf4" divided by the sum of all expense line reporting totals.
+Name: Suppliers Enabled with SIM
+  Description: The Percentage of suppliers with a SIM form
+  Details: The higher the better.
+  Formula: The distinct count of forms with a subject type of Supplier Information and have a subject ID that are not in a new or draft status. This is dvided by the distinct counts of all suppliers.
